@@ -3,101 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Local Avanzado para Metepec -->
-    <title>Quiropráctica Integral Metepec | Corrección Estructural y Alineación</title>
+    <title>Quiropráctica Integral Metepec | Corrección Estructural</title>
     <meta name="description" content="Especialistas en quiropráctica y alineación estructural en Metepec. Tratamos la raíz de dolores de espalda, ciática y problemas posturales mediante ajustes precisos.">
     
-    <!-- Tailwind CSS v4 para UI Moderna -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- GSAP + ScrollTrigger para Animaciones Fluídas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Three.js + GLTFLoader para Renderizado 3D Real -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
     <style>
         .reveal-up { opacity: 0; transform: translateY(40px); }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
-    <!-- NAVIGATION WITH BRAND LOGO & SOCIAL ICONS -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo Local Vinculado -->
             <a href="#" class="flex items-center gap-3 group relative z-50">
                 <img src="logo.png" alt="Quiropráctica Integral Metepec Logo" class="h-10 w-auto object-contain">
                 <div class="flex flex-col">
-                    <span class="text-lg font-black tracking-tight text-slate-900 group-hover:text-green-600 transition-colors">Quiropráctica Integral</span>
+                    <span class="text-lg font-black tracking-tight text-slate-900 group-hover:text-emerald-600 transition-colors">Quiropráctica Integral</span>
                     <span class="text-xs uppercase tracking-widest text-slate-400 font-bold -mt-1">Metepec</span>
                 </div>
             </a>
 
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-600 tracking-wide relative z-50">
-                <a href="#inicio" class="hover:text-green-600 transition-colors">Inicio</a>
-                <a href="#compromiso" class="hover:text-green-600 transition-colors">Nosotros</a>
-                <a href="#habitos" class="hover:text-green-600 transition-colors">Hábitos</a>
-                <a href="#terapias" class="hover:text-green-600 transition-colors">Terapias</a>
-                <a href="#ubicacion" class="hover:text-green-600 transition-colors">Ubicación</a>
+                <a href="#inicio" class="hover:text-emerald-600 transition-colors">Inicio</a>
+                <a href="#compromiso" class="hover:text-emerald-600 transition-colors">Nosotros</a>
+                <a href="#habitos" class="hover:text-emerald-600 transition-colors">Hábitos</a>
+                <a href="#terapias" class="hover:text-emerald-600 transition-colors">Terapias</a>
+                <a href="#ubicacion" class="hover:text-emerald-600 transition-colors">Ubicación</a>
             </nav>
 
             <div class="hidden md:flex items-center gap-5 relative z-50">
                 <div class="flex items-center gap-4 text-slate-400 border-r border-slate-200 pr-4">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-green-600 transition-colors" title="Facebook">
+                    <a href="https://facebook.com" target="_blank" class="hover:text-emerald-600 transition-colors" title="Facebook">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
                     </a>
                 </div>
-                <a href="tel:7224595819" class="text-slate-600 hover:text-green-600 transition-colors text-sm font-bold flex items-center gap-1">
+                <a href="tel:7224595819" class="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-bold flex items-center gap-1">
                     📞 722 459 5819
                 </a>
-                <button onclick="openModal()" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold shadow-sm transition-all transform hover:-translate-y-0.5 text-xs tracking-wider uppercase cursor-pointer">
+                <button onclick="openModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-bold shadow-sm transition-all transform hover:-translate-y-0.5 text-xs tracking-wider uppercase cursor-pointer">
                     Hacer Cita
                 </button>
             </div>
 
-            <!-- Botón Menú Móvil -->
             <button id="menu-btn" class="md:hidden text-slate-700 p-2 focus:outline-none relative z-50" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
-        <!-- Menú Móvil Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute top-20 left-0 w-full px-6 py-6 flex flex-col gap-4 shadow-xl font-bold text-slate-700 z-40">
             <a href="#inicio" class="mobile-link py-2 border-b border-slate-50">Inicio</a>
             <a href="#compromiso" class="mobile-link py-2 border-b border-slate-50">Nosotros</a>
             <a href="#habitos" class="mobile-link py-2 border-b border-slate-50">Hábitos</a>
             <a href="#terapias" class="mobile-link py-2 border-b border-slate-50">Terapias</a>
             <a href="#ubicacion" class="mobile-link py-2 border-b border-slate-50">Ubicación</a>
-            <div class="flex gap-4 py-2 border-b border-slate-50 text-green-700 text-sm">
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-            </div>
-            <button onclick="openModal(); mobileMenu.classList.add('hidden');" class="bg-green-600 text-white text-center py-3 rounded-xl mt-2 font-bold w-full cursor-pointer">Hacer Cita</button>
+            <button onclick="openModal(); mobileMenu.classList.add('hidden');" class="bg-emerald-600 text-white text-center py-3 rounded-xl mt-2 font-bold w-full cursor-pointer">Hacer Cita</button>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 text-white overflow-hidden">
+    <section id="inicio" class="relative min-h-screen flex items-center bg-gradient-to-tr from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
         
-        <!-- Contenedor WebGL para la escena 3D -->
         <div id="canvas-3d-container" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></div>
+
+        <div class="absolute right-0 top-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none z-0 hidden md:block"></div>
 
         <div class="max-w-7xl mx-auto px-6 py-16 w-full grid md:grid-cols-12 gap-12 items-center relative z-20 pointer-events-none">
             <div class="space-y-6 md:col-span-7 lg:col-span-6 relative z-30">
-                <div id="hero-tag" class="reveal-up inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-green-400">
+                <div id="hero-tag" class="reveal-up inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-emerald-400">
                     🌿 Cuidado Quiropráctico Profesional en Metepec
                 </div>
                 <h1 id="hero-title" class="reveal-up text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
                     Recupera tu vitalidad, <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">libera tu columna.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">libera tu columna.</span>
                 </h1>
                 <p id="hero-desc" class="reveal-up text-lg text-slate-300 max-w-lg font-light leading-relaxed">
                     En <strong class="font-semibold text-white">Quiropráctica Integral Metepec</strong> nos enfocamos en detectar y corregir la verdadera causa de raíz de tus padecimientos a través de ajustes precisos.
                 </p>
-                <!-- CORRECCIÓN DE TEXTO EN EL BOTÓN -->
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
-                    <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
+                    <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-600 hover:to-teal-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-emerald-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
                         🗓 Hacer Cita
                     </button>
                 </div>
@@ -105,7 +93,6 @@
         </div>
     </section>
 
-    <!-- MODAL EMERGENTE -->
     <div id="appointment-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div id="modal-content" class="bg-white rounded-3xl p-6 sm:p-10 max-w-lg w-full shadow-2xl relative transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold p-2 focus:outline-none cursor-pointer">✕</button>
@@ -153,25 +140,24 @@
                     <input type="tel" id="form-telefono" required placeholder="Ej. 7221234567" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium">
                 </div>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-black py-4 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md mt-4 cursor-pointer">
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-700 hover:to-teal-600 text-white font-black py-4 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md mt-4 cursor-pointer">
                     Confirmar y Solicitar Cita
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- COMPROMISO & NOSOTROS -->
     <section id="compromiso" class="py-24 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12">
             <div class="reveal-up bg-white border border-slate-100 p-8 sm:p-10 rounded-3xl shadow-xs hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-xl font-bold mb-6">🤝</div>
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl font-bold mb-6">🤝</div>
                 <h2 class="text-2xl font-black tracking-tight text-slate-900 mb-4">Nuestro Compromiso</h2>
                 <p class="text-slate-600 leading-relaxed font-light">
                     Es devolverle a tu cuerpo la vitalidad, salud y alivio que se merece, atacando la causa real de tus padecimientos mediante el ajuste integral y la alineación estructural, logrando así recuperar al 100% las funciones óptimas de tu organismo de manera completamente natural.
                 </p>
             </div>
             <div class="reveal-up bg-white border border-slate-100 p-8 sm:p-10 rounded-3xl shadow-xs hover:shadow-md transition-shadow">
-                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-xl font-bold mb-6">⚡</div>
+                <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-xl font-bold mb-6">⚡</div>
                 <h2 class="text-2xl font-black tracking-tight text-slate-900 mb-4">Nuestros Servicios</h2>
                 <p class="text-slate-600 leading-relaxed font-light">
                     Brindamos atención personalizada en subluxaciones y desajustes de la columna vertebral. Nos enfocamos en corregir problemas posturales y padecimientos articulares-musculares devolviendo el equilibrio a tu cuerpo mediante aparatología avanzada y técnicas manuales certificadas.
@@ -180,52 +166,51 @@
         </div>
     </section>
 
-    <!-- 8 HÁBITOS POSTURALES -->
     <section id="habitos" class="py-24 bg-slate-100 border-y border-slate-200/50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs uppercase tracking-widest font-bold text-green-600">Prevención Diaria</span>
+                <span class="text-xs uppercase tracking-widest font-bold text-emerald-600">Prevención Diaria</span>
                 <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">8 Hábitos Posturales Correctos</h2>
                 <p class="text-slate-500 font-light">Pequeños ajustes en tu rutina diaria que previenen desgastes severos en tu columna vertebral.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">🛌</div>
                     <h3 class="font-bold text-slate-900 mb-2">1. Forma de Dormir</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Boca arriba con almohada debajo de las rodillas, o de lado con almohada entre las rodillas dobladas. Evita dormir boca abajo.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">🪑</div>
                     <h3 class="font-bold text-slate-900 mb-2">2. Al estar Sentado</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Espalda recta apoyada firmemente en el respaldo, hombros relajados y ambos pies planos sobre el piso. No cruces las piernas.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">🧍</div>
                     <h3 class="font-bold text-slate-900 mb-2">3. Al estar De Pie</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Distribuye el peso equitativamente en ambos pies, mantén los hombros alineados hacia atrás y evita encorvar la espalda superior.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">📦</div>
                     <h3 class="font-bold text-slate-900 mb-2">4. Levantar Objetos</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Flexiona siempre las rodillas manteniendo la espalda recta. Levanta la carga usando la fuerza de tus piernas, manteniéndola muy pegada al cuerpo.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">🎒</div>
                     <h3 class="font-bold text-slate-900 mb-2">5. Carga de Bolsos</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Usa mochilas de dos tirantes distribuidas en ambos hombros. Si es bolso de mano, alterna el lado de carga frecuentemente.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">💻</div>
                     <h3 class="font-bold text-slate-900 mb-2">6. Uso de Laptops</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Eleva la pantalla a la altura de tus ojos usando un soporte. Utiliza un teclado y mouse externos para que tus brazos descansen a 90 grados.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">📱</div>
                     <h3 class="font-bold text-slate-900 mb-2">7. Celulares</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Levanta el smartphone hacia tu rostro en lugar de inclinar el cuello hacia abajo. Así evitas el síndrome de cuello de texto.</p>
                 </div>
-                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-green-300 transition-colors">
+                <div class="reveal-up bg-white p-6 rounded-2xl border border-slate-200/60 shadow-xs hover:border-emerald-300 transition-colors">
                     <div class="text-2xl mb-4">🚗</div>
                     <h3 class="font-bold text-slate-900 mb-2">8. Al Conducir</h3>
                     <p class="text-xs text-slate-500 leading-relaxed font-light">Regula el asiento para que alcances los pedales manteniendo las rodillas ligeramente flexionadas, con la espalda baja apoyada por completo.</p>
@@ -234,39 +219,37 @@
         </div>
     </section>
 
-    <!-- TERAPIAS Y APARATOLOGÍA -->
     <section id="terapias" class="py-24 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <span class="text-xs uppercase tracking-widest font-bold text-green-400">Nuestra Tecnología</span>
+                <span class="text-xs uppercase tracking-widest font-bold text-emerald-400">Nuestra Tecnología</span>
                 <h2 class="text-3xl sm:text-4xl font-black tracking-tight">Técnicas y Aparatología</h2>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="reveal-up bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors p-6">
                     <img src="alineacion.png" alt="Alineación de Columna" class="w-full h-44 object-cover rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-green-400 mb-2">Alineación de Columna</h3>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Alineación de Columna</h3>
                     <p class="text-xs text-slate-400 leading-relaxed font-light">Ajuste articular enfocado en liberar las presiones ocasionadas por subluxaciones, corregir los desajustes y recuperar el bienestar corporal.</p>
                 </div>
                 <div class="reveal-up bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors p-6">
                     <img src="activador.png" alt="Instrumento Activador" class="w-full h-44 object-cover rounded-xl mb-4">
-                    <h3 class="text-lg font-bold text-green-400 mb-2">Instrumento Activador</h3>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Instrumento Activador</h3>
                     <p class="text-xs text-slate-400 leading-relaxed font-light">Dispositivo de percusión neumática controlada que permite liberar bloqueos localizados sobre zonas articulares muy específicas.</p>
                 </div>
                 <div class="reveal-up bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors p-6">
                     <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" alt="Cama Térmica de Masaje Ceragem" class="w-full h-44 object-cover rounded-xl mb-4 opacity-90">
-                    <h3 class="text-lg font-bold text-green-400 mb-2">Cama Térmica de Masaje</h3>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Cama Térmica de Masaje</h3>
                     <p class="text-xs text-slate-400 leading-relaxed font-light">Aparato avanzado de calor infrarrojo y rodillos mecánicos internos que estimulan los puntos clave de la columna y relajan la musculatura para-vertebral.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- UBICACIÓN REAL EMBED -->
     <section id="ubicacion" class="py-24 bg-slate-100 border-t border-slate-200/60">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
-                <span class="text-xs uppercase tracking-widest font-bold text-green-600">¿Dónde encontrarnos?</span>
+                <span class="text-xs uppercase tracking-widest font-bold text-emerald-600">¿Dónde encontrarnos?</span>
                 <h2 class="text-3xl font-black tracking-tight text-slate-900">Ubicación en Metepec</h2>
                 <div class="space-y-4 font-light text-slate-600 leading-relaxed">
                     <p class="flex items-start gap-3">
@@ -275,7 +258,7 @@
                     </p>
                     <p class="flex items-start gap-3">
                         <span class="text-xl">📞</span>
-                        <span><strong class="font-bold text-slate-800">Teléfono Directo:</strong> <a href="tel:7224595819" class="text-green-700 font-semibold hover:underline">722 459 5819</a></span>
+                        <span><strong class="font-bold text-slate-800">Teléfono Directo:</strong> <a href="tel:7224595819" class="text-emerald-700 font-semibold hover:underline">722 459 5819</a></span>
                     </p>
                     <p class="flex items-start gap-3">
                         <span class="text-xl">📅</span>
@@ -283,34 +266,28 @@
                     </p>
                 </div>
                 <div class="pt-4">
-                    <a href="https://maps.app.goo.gl/tWv9M2W79g9hMv3d7" target="_blank" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold px-6 py-3.5 rounded-xl shadow-xs transition-all text-sm">
+                    <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold px-6 py-3.5 rounded-xl shadow-xs transition-all text-sm">
                         🗺️ Abrir en la App de Google Maps
                     </a>
                 </div>
             </div>
             
             <div class="reveal-up h-[450px] w-full bg-slate-200 rounded-3xl overflow-hidden border border-slate-300/60 shadow-md relative group">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.584502942404!2d-99.5667886!3d19.256931700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd8b3d5b715aed%3A0x602cf309c03cc973!2sQuiropr%C3%A1ctica%20Integral!5e0!3m2!1ses-419!2smx!4v1781708870200!5m2!1ses-419!2smx" class="w-full h-full border-none relative z-10 opacity-95 group-hover:opacity-100 transition-opacity" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="w-full h-full bg-slate-300 flex items-center justify-center text-slate-500 text-sm">Mapa Interactivo de Metepec</div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-sm">
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-lg tracking-tight">Quiropráctica Integral</h4>
                 <p class="font-light text-slate-400 leading-relaxed max-w-xs">Atención profesional enfocada en la alineación estructural y cuidado de tu columna de manera natural en Metepec.</p>
-                <div class="flex items-center gap-5 text-slate-500 pt-2">
-                    <a href="https://facebook.com" target="_blank" class="hover:text-white transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
-                    </a>
-                </div>
             </div>
             <div class="space-y-3">
                 <h4 class="text-white font-bold tracking-tight">Contacto</h4>
                 <div class="font-light space-y-2">
-                    <p><a href="https://maps.app.goo.gl/tWv9M2W79g9hMv3d7" target="_blank" class="text-slate-300 font-bold hover:text-green-400 transition-colors">📍 Metepec</a></p>
+                    <p class="text-slate-300 font-bold">📍 Metepec</p>
                     <p class="text-xs text-slate-500 font-mono">Teléfono: 722 459 5819</p>
                 </div>
             </div>
@@ -322,11 +299,10 @@
         </div>
     </footer>
 
-    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT) -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Control del Modal Emergente de Citas
+        // Control del Modal
         const modal = document.getElementById('appointment-modal');
         const modalContent = document.getElementById('modal-content');
 
@@ -346,11 +322,9 @@
         // Menú Móvil
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        // --- ENTORNO THREE.JS CON ALGORITMO DE CENTRADO ABSOLUTO EN EJE Y ---
+        // --- ENTORNO THREE.JS CON RE-DISEÑO DE MATERIAL E ILUMINACIÓN DE ESTUDIO ---
         const container = document.getElementById('canvas-3d-container');
         const scene = new THREE.Scene();
         
@@ -362,76 +336,74 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Iluminación
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
+        // 1. Luz Ambiental Neutra para rellenar sombras oscuras
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
         scene.add(ambientLight);
 
-        const light1 = new THREE.DirectionalLight(0x22c55e, 3.5); 
-        light1.position.set(5, 10, 7);
-        scene.add(light1);
+        // 2. Luz de Estudio Clave (Blanca frontal/lateral para realismo de hueso)
+        const mainLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        mainLight.position.set(6, 6, 8);
+        scene.add(mainLight);
 
-        const light2 = new THREE.DirectionalLight(0xffffff, 2.5);
-        light2.position.set(-5, 4, 5);
-        scene.add(light2);
+        // 3. Luz de Relleno Suave opuesta
+        const fillLight = new THREE.DirectionalLight(0xf1f5f9, 1.5);
+        fillLight.position.set(-6, 2, 4);
+        scene.add(fillLight);
 
-        let spineMesh;
+        // 4. Luz de Acento Premium - Un sutil toque Verde Esmeralda trasero (Contraluz)
+        const rimLight = new THREE.DirectionalLight(0x10b981, 4.0); 
+        rimLight.position.set(-4, 5, -5);
+        scene.add(rimLight);
+
+        let pivotGroup;
         const loader = new THREE.GLTFLoader();
 
         loader.load('./spine_collection_of_thunthu.glb', (gltf) => {
-            spineMesh = gltf.scene;
+            const spineMesh = gltf.scene;
             
-            // Re-mapear materiales a verde esmeralda
+            // CAMBIO ESPECTACULAR: Material Hueso Marfil Premium en lugar de verde plano
             spineMesh.traverse((node) => {
                 if (node.isMesh) {
                     node.material = new THREE.MeshStandardMaterial({
-                        color: 0x22c55e,       
-                        roughness: 0.25,        
-                        metalness: 0.1,        
-                        side: THREE.DoubleSide 
+                        color: 0xf8fafc,         // Blanco marfil orgánico clínico limpio
+                        roughness: 0.45,         // Textura realista no plasticosa
+                        metalness: 0.05,         // Sin reflejos de metal de ciencia ficción
+                        side: THREE.DoubleSide
                     });
                     node.material.needsUpdate = true;
                 }
             });
 
-            // CORRECCIÓN MATEMÁTICA BRUTAL: Calcular caja de colisión absoluta de la geometría del hueso
-            const box = new THREE.Box3();
-            box.setFromObject(spineMesh);
-            
+            // Ajuste geométrico estricto de colisiones
+            const box = new THREE.Box3().setFromObject(spineMesh);
             const center = new THREE.Vector3();
             box.getCenter(center);
-            
             const size = new THREE.Vector3();
             box.getSize(size);
             
-            // Forzar de forma estricta que los huesos reales queden en el origen local (0,0,0) de su contenedor
-            spineMesh.position.x = -center.x;
-            spineMesh.position.y = -center.y;
-            spineMesh.position.z = -center.z;
+            spineMesh.position.set(-center.x, -center.y, -center.z);
 
-            // Crear un nodo pivote maestro para controlar la altura real de forma independiente
-            const pivotGroup = new THREE.Group();
+            pivotGroup = new THREE.Group();
             pivotGroup.add(spineMesh);
 
-            // Escalamiento matemático adaptativo basado en el hueso real detectado
             const maxDim = Math.max(size.x, size.y, size.z);
             if(maxDim > 0) {
                 const targetScale = 3.6 / maxDim; 
                 pivotGroup.scale.set(targetScale, targetScale, targetScale);
             }
             
-            // Función responsiva aplicada directamente sobre el grupo pivote corregido
             window.repositionPivot = function() {
                 if (window.innerWidth > 768) {
-                    pivotGroup.position.set(1.5, -0.2, 0); // Bajado sutilmente y centrado a la derecha en PC
+                    pivotGroup.position.set(1.5, -0.15, 0); // Centrado fino en PC
                 } else {
-                    pivotGroup.position.set(0, -0.5, -0.8); // Centrado de fondo en móviles
+                    pivotGroup.position.set(0, -0.4, -0.8);  // Centrado fino en móvil
                 }
             }
             
             repositionPivot();
             scene.add(pivotGroup);
 
-            // Vinculación al Scroll con GSAP sobre el grupo pivote alineado
+            // Animación fluida de scroll
             gsap.to(pivotGroup.rotation, {
                 scrollTrigger: {
                     trigger: "#inicio",
@@ -439,8 +411,8 @@
                     end: "bottom top",
                     scrub: 0.5
                 },
-                y: Math.PI * 2, // Rotación tridimensional de 360° al scrollear
-                x: 0.1,         
+                y: Math.PI * 2,
+                x: 0.05,
                 ease: "none"
             });
         });
@@ -448,10 +420,8 @@
         // Loop de Renderizado
         function animate() {
             requestAnimationFrame(animate);
-            // Rotación automática constante si el objeto ya cargó en la escena
-            const activeGroup = scene.children.find(c => c.type === "Group");
-            if (activeGroup && !gsap.isTweening(activeGroup.rotation)) {
-                activeGroup.rotation.y += 0.003; 
+            if (pivotGroup && !gsap.isTweening(pivotGroup.rotation)) {
+                pivotGroup.rotation.y += 0.0025; 
             }
             renderer.render(scene, camera);
         }
@@ -464,7 +434,7 @@
             if (window.repositionPivot) window.repositionPivot();
         });
 
-        // Entrada de Textos del Hero
+        // Animación de entrada de textos
         window.addEventListener('DOMContentLoaded', () => {
             gsap.set(".reveal-up", { opacity: 1, y: 0 });
             const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.2 } });
@@ -472,49 +442,6 @@
               .from("#hero-title", { opacity: 0, y: 40 }, "-=1")
               .from("#hero-desc", { opacity: 0, y: 30 }, "-=1")
               .from("#hero-actions", { opacity: 0, y: 25 }, "-=1");
-
-            const elementsToReveal = document.querySelectorAll('#compromiso > div, #habitos div.reveal-up, #terapias .reveal-up, #ubicacion .reveal-up');
-            elementsToReveal.forEach((el) => {
-                el.classList.add('active');
-                gsap.from(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 90%",
-                        toggleActions: "play none none none"
-                    },
-                    opacity: 0,
-                    y: 40,
-                    duration: 0.8,
-                    ease: "power2.out"
-                });
-            });
-        });
-
-        // Formulario a WhatsApp
-        document.getElementById('modal-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const motivo = document.getElementById('form-motivo').value;
-            const fecha = document.getElementById('form-fecha').value;
-            const horario = document.getElementById('form-horario').value;
-            const nombre = document.getElementById('form-nombre').value.trim();
-            const telefono = document.getElementById('form-telefono').value.trim();
-
-            const mensaje = `Hola, me gustaría hacer una cita en Metepec.%0A*Nombre:* ${nombre}%0A*WhatsApp:* ${telefono}%0A*Motivo:* ${motivo}%0A*Fecha:* ${fecha}%0A*Horario:* ${horario}`;
-            
-            gsap.to(modalContent, { opacity: 0, y: -20, duration: 0.3, onComplete: () => {
-                modalContent.innerHTML = `
-                    <div class="text-center py-10 space-y-4">
-                        <span class="text-6xl block animate-bounce">🎉</span>
-                        <h3 class="text-2xl font-black text-slate-900">¡Solicitud Procesada!</h3>
-                        <p class="text-sm text-slate-500 font-light">Transfiriendo los datos de tu horario a nuestro WhatsApp seguro...</p>
-                    </div>
-                `;
-                gsap.to(modalContent, { opacity: 1, y: 0, duration: 0.3 });
-                setTimeout(() => {
-                    window.open(`https://wa.me/7224595819?text=${mensaje}`, '_blank');
-                    closeModal();
-                }, 1600);
-            }});
         });
     </script>
 </body>
