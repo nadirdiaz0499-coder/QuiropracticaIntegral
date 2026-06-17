@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiropráctica Integral Metepec | Corrección Postural y Alineación</title>
+    <!-- SEO Local Avanzado para Metepec -->
+    <title>Quiropráctica Integral Metepec | Corrección Estructural y Alineación</title>
     <meta name="description" content="Especialistas en quiropráctica y alineación estructural en Metepec. Tratamos la raíz de dolores de espalda, ciática y problemas posturales mediante ajustes precisos.">
     
+    <!-- Tailwind CSS v4 para UI Moderna -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- GSAP + ScrollTrigger para Animaciones Fluídas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Three.js + GLTFLoader para Renderizado 3D Real -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     
@@ -19,8 +23,10 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
+    <!-- NAVIGATION WITH BRAND LOGO & SOCIAL ICONS -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo Local Vinculado -->
             <a href="#" class="flex items-center gap-3 group relative z-50">
                 <img src="logo.png" alt="Quiropráctica Integral Metepec Logo" class="h-10 w-auto object-contain">
                 <div class="flex flex-col">
@@ -51,11 +57,13 @@
                 </button>
             </div>
 
+            <!-- Botón Menú Móvil -->
             <button id="menu-btn" class="md:hidden text-slate-700 p-2 focus:outline-none relative z-50" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
+        <!-- Menú Móvil Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute top-20 left-0 w-full px-6 py-6 flex flex-col gap-4 shadow-xl font-bold text-slate-700 z-40">
             <a href="#inicio" class="mobile-link py-2 border-b border-slate-50">Inicio</a>
             <a href="#compromiso" class="mobile-link py-2 border-b border-slate-50">Nosotros</a>
@@ -69,8 +77,10 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 text-white overflow-hidden">
         
+        <!-- Contenedor WebGL para la escena 3D -->
         <div id="canvas-3d-container" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 py-16 w-full grid md:grid-cols-12 gap-12 items-center relative z-20 pointer-events-none">
@@ -85,15 +95,17 @@
                 <p id="hero-desc" class="reveal-up text-lg text-slate-300 max-w-lg font-light leading-relaxed">
                     En <strong class="font-semibold text-white">Quiropráctica Integral Metepec</strong> nos enfocamos en detectar y corregir la verdadera causa de raíz de tus padecimientos a través de ajustes precisos.
                 </p>
+                <!-- CORRECCIÓN DE TEXTO EN EL BOTÓN -->
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
                     <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
-                        Ajuste Postural 🗓 Hacer Cita
+                        🗓 Hacer Cita
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- MODAL EMERGENTE -->
     <div id="appointment-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div id="modal-content" class="bg-white rounded-3xl p-6 sm:p-10 max-w-lg w-full shadow-2xl relative transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-xl font-bold p-2 focus:outline-none cursor-pointer">✕</button>
@@ -148,6 +160,7 @@
         </div>
     </div>
 
+    <!-- COMPROMISO & NOSOTROS -->
     <section id="compromiso" class="py-24 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12">
             <div class="reveal-up bg-white border border-slate-100 p-8 sm:p-10 rounded-3xl shadow-xs hover:shadow-md transition-shadow">
@@ -167,6 +180,7 @@
         </div>
     </section>
 
+    <!-- 8 HÁBITOS POSTURALES -->
     <section id="habitos" class="py-24 bg-slate-100 border-y border-slate-200/50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -220,6 +234,7 @@
         </div>
     </section>
 
+    <!-- TERAPIAS Y APARATOLOGÍA -->
     <section id="terapias" class="py-24 bg-slate-900 text-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -247,6 +262,7 @@
         </div>
     </section>
 
+    <!-- UBICACIÓN REAL EMBED -->
     <section id="ubicacion" class="py-24 bg-slate-100 border-t border-slate-200/60">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="space-y-6">
@@ -267,7 +283,7 @@
                     </p>
                 </div>
                 <div class="pt-4">
-                    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.584502942404!2d-99.5667886!3d19.256931700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd8b3d5b715aed%3A0x602cf309c03cc973!2sQuiropr%C3%A1ctica%20Integral!5e0!3m2!1ses-419!2smx!4v1781708870200!5m2!1ses-419!2smx" target="_blank" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold px-6 py-3.5 rounded-xl shadow-xs transition-all text-sm">
+                    <a href="https://maps.app.goo.gl/tWv9M2W79g9hMv3d7" target="_blank" class="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-bold px-6 py-3.5 rounded-xl shadow-xs transition-all text-sm">
                         🗺️ Abrir en la App de Google Maps
                     </a>
                 </div>
@@ -279,6 +295,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 text-sm">
             <div class="space-y-4">
@@ -293,7 +310,7 @@
             <div class="space-y-3">
                 <h4 class="text-white font-bold tracking-tight">Contacto</h4>
                 <div class="font-light space-y-2">
-                    <p><a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.584502942404!2d-99.5667886!3d19.256931700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd8b3d5b715aed%3A0x602cf309c03cc973!2sQuiropr%C3%A1ctica%20Integral!5e0!3m2!1ses-419!2smx!4v1781708870200!5m2!1ses-419!2smx" target="_blank" class="text-slate-300 font-bold hover:text-green-400 transition-colors">📍 Metepec</a></p>
+                    <p><a href="https://maps.app.goo.gl/tWv9M2W79g9hMv3d7" target="_blank" class="text-slate-300 font-bold hover:text-green-400 transition-colors">📍 Metepec</a></p>
                     <p class="text-xs text-slate-500 font-mono">Teléfono: 722 459 5819</p>
                 </div>
             </div>
@@ -305,6 +322,7 @@
         </div>
     </footer>
 
+    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT) -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -332,7 +350,7 @@
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        // --- ENTORNO THREE.JS CON COORDENADA DE ALTURA CORREGIDA ---
+        // --- ENTORNO THREE.JS CON ALGORITMO DE CENTRADO ABSOLUTO EN EJE Y ---
         const container = document.getElementById('canvas-3d-container');
         const scene = new THREE.Scene();
         
@@ -344,7 +362,7 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Iluminación completa
+        // Iluminación
         const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
         scene.add(ambientLight);
 
@@ -362,7 +380,7 @@
         loader.load('./spine_collection_of_thunthu.glb', (gltf) => {
             spineMesh = gltf.scene;
             
-            // Re-mapear materiales a verde esmeralda corporativo
+            // Re-mapear materiales a verde esmeralda
             spineMesh.traverse((node) => {
                 if (node.isMesh) {
                     node.material = new THREE.MeshStandardMaterial({
@@ -375,53 +393,65 @@
                 }
             });
 
-            // Medición geométrica para auto-centrado
-            const box = new THREE.Box3().setFromObject(spineMesh);
-            const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
+            // CORRECCIÓN MATEMÁTICA BRUTAL: Calcular caja de colisión absoluta de la geometría del hueso
+            const box = new THREE.Box3();
+            box.setFromObject(spineMesh);
             
-            spineMesh.position.x += (spineMesh.position.x - center.x);
-            spineMesh.position.y += (spineMesh.position.y - center.y);
-            spineMesh.position.z += (spineMesh.position.z - center.z);
+            const center = new THREE.Vector3();
+            box.getCenter(center);
+            
+            const size = new THREE.Vector3();
+            box.getSize(size);
+            
+            // Forzar de forma estricta que los huesos reales queden en el origen local (0,0,0) de su contenedor
+            spineMesh.position.x = -center.x;
+            spineMesh.position.y = -center.y;
+            spineMesh.position.z = -center.z;
 
+            // Crear un nodo pivote maestro para controlar la altura real de forma independiente
+            const pivotGroup = new THREE.Group();
+            pivotGroup.add(spineMesh);
+
+            // Escalamiento matemático adaptativo basado en el hueso real detectado
             const maxDim = Math.max(size.x, size.y, size.z);
             if(maxDim > 0) {
                 const targetScale = 3.6 / maxDim; 
-                spineMesh.scale.set(targetScale, targetScale, targetScale);
+                pivotGroup.scale.set(targetScale, targetScale, targetScale);
             }
             
-            repositionMesh();
-            scene.add(spineMesh);
+            // Función responsiva aplicada directamente sobre el grupo pivote corregido
+            window.repositionPivot = function() {
+                if (window.innerWidth > 768) {
+                    pivotGroup.position.set(1.5, -0.2, 0); // Bajado sutilmente y centrado a la derecha en PC
+                } else {
+                    pivotGroup.position.set(0, -0.5, -0.8); // Centrado de fondo en móviles
+                }
+            }
+            
+            repositionPivot();
+            scene.add(pivotGroup);
 
-            // Vinculación al Scroll con GSAP
-            gsap.to(spineMesh.rotation, {
+            // Vinculación al Scroll con GSAP sobre el grupo pivote alineado
+            gsap.to(pivotGroup.rotation, {
                 scrollTrigger: {
                     trigger: "#inicio",
                     start: "top top",
                     end: "bottom top",
                     scrub: 0.5
                 },
-                y: Math.PI * 2, 
+                y: Math.PI * 2, // Rotación tridimensional de 360° al scrollear
                 x: 0.1,         
                 ease: "none"
             });
         });
 
-        // CORRECCIÓN DE ALTURA RESPONSIVE: Bajamos la posición Y para que no choque arriba
-        function repositionMesh() {
-            if (!spineMesh) return;
-            if (window.innerWidth > 768) {
-                spineMesh.position.set(1.5, -0.6, 0); // Bajado a -0.6 en PC (Estaba en 0)
-            } else {
-                spineMesh.position.set(0, -0.9, -0.8); // Bajado a -0.9 en celular
-            }
-        }
-
         // Loop de Renderizado
         function animate() {
             requestAnimationFrame(animate);
-            if (spineMesh && !gsap.isTweening(spineMesh.rotation)) {
-                spineMesh.rotation.y += 0.003; 
+            // Rotación automática constante si el objeto ya cargó en la escena
+            const activeGroup = scene.children.find(c => c.type === "Group");
+            if (activeGroup && !gsap.isTweening(activeGroup.rotation)) {
+                activeGroup.rotation.y += 0.003; 
             }
             renderer.render(scene, camera);
         }
@@ -431,7 +461,7 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            repositionMesh();
+            if (window.repositionPivot) window.repositionPivot();
         });
 
         // Entrada de Textos del Hero
