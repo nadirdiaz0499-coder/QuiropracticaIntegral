@@ -26,6 +26,7 @@
     <!-- NAVIGATION WITH BRAND LOGO & SOCIAL ICONS -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo Local Vinculado -->
             <a href="#" class="flex items-center gap-3 group relative z-50">
                 <img src="logo.png" alt="Quiropráctica Integral Metepec Logo" class="h-10 w-auto object-contain">
                 <div class="flex flex-col">
@@ -43,6 +44,7 @@
             </nav>
 
             <div class="hidden md:flex items-center gap-5 relative z-50">
+                <!-- Redes Sociales -->
                 <div class="flex items-center gap-4 text-slate-400 border-r border-slate-200 pr-4">
                     <a href="https://facebook.com" target="_blank" class="hover:text-green-600 transition-colors" title="Facebook">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
@@ -56,6 +58,7 @@
                 </button>
             </div>
 
+            <!-- Botón Menú Móvil -->
             <button id="menu-btn" class="md:hidden text-slate-700 p-2 focus:outline-none relative z-50" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
@@ -75,14 +78,19 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (ESTRUCTURA DE REJILLA BLINDADA) -->
+    <!-- HERO SECTION WITH GRADIENT CONTRASTE MASK -->
     <section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 text-white overflow-hidden">
         
-        <div class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_75%_50%,rgba(22,163,74,0.12),transparent_50%)]"></div>
+        <!-- Canvas 3D de fondo completo ocupando toda la pantalla -->
+        <div id="canvas-3d-container" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-6 py-20 w-full grid md:grid-cols-12 gap-8 items-center relative z-20">
-            <!-- Columna del Texto: Ocupa la mitad izquierda estricta en PC -->
-            <div class="space-y-6 md:col-span-7 lg:col-span-6 relative z-30 pointer-events-none">
+        <!-- CAPA MÁSCARA GRADIENTE: Oscurece el lado izquierdo para proteger la lectura de las letras blancas -->
+        <div class="absolute inset-0 z-15 pointer-events-none bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent md:to-transparent/20"></div>
+        <div class="absolute inset-0 z-15 pointer-events-none bg-[radial-gradient(circle_at_80%_50%,rgba(22,163,74,0.1),transparent_50%)]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-16 w-full relative z-20 pointer-events-none">
+            <!-- Text Content Layer centrado responsivo -->
+            <div class="space-y-6 max-w-2xl relative z-30">
                 <div id="hero-tag" class="reveal-up inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-green-400">
                     🌿 Cuidado Quiropráctico Profesional en Metepec
                 </div>
@@ -90,19 +98,15 @@
                     Recupera tu vitalidad, <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">libera tu columna.</span>
                 </h1>
-                <p id="hero-desc" class="reveal-up text-lg text-slate-300 font-light leading-relaxed">
+                <p id="hero-desc" class="reveal-up text-lg text-slate-300 max-w-lg font-light leading-relaxed">
                     En <strong class="font-semibold text-white">Quiropráctica Integral Metepec</strong> nos enfocamos en detectar y corregir la verdadera causa de raíz de tus padecimientos a través de ajustes precisos.
                 </p>
+                <!-- BOTÓN DE ACCIÓN CORREGIDO (MÍNIMALISTA) -->
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
                     <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
-                        Ajuste Postural 🗓 Hacer Cita
+                        🗓 Hacer Cita
                     </button>
                 </div>
-            </div>
-
-            <!-- Columna del Canvas 3D: Contenedor dedicado a la mitad derecha en PC -->
-            <div class="md:col-span-5 lg:col-span-6 h-[500px] md:h-[600px] w-full relative z-10">
-                <div id="canvas-3d-container" class="w-full h-full"></div>
             </div>
         </div>
     </section>
@@ -324,7 +328,7 @@
         </div>
     </footer>
 
-    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT REFINADO) -->
+    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT DEFINITIVO) -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -352,20 +356,19 @@
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        // --- ENTORNO THREE.JS CON RECALCULACIÓN DE RESPONSIVO CRÍTICO ---
+        // --- ENTORNO THREE.JS CON RETORNO A FONDO COMPLETO ---
         const container = document.getElementById('canvas-3d-container');
         const scene = new THREE.Scene();
         
-        // Ajustamos campo de visión para que encuadre perfectamente en el div de la derecha
-        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.01, 5000);
-        camera.position.set(0, 0, 5); 
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 5000);
+        camera.position.set(0, 0, 6); 
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Iluminación blanca de alta fidelidad para el acabado marfil
+        // Iluminación blanca potente
         const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
         scene.add(ambientLight);
 
@@ -383,7 +386,7 @@
         loader.load('./spine_collection_of_thunthu.glb', (gltf) => {
             spineMesh = gltf.scene;
             
-            // Forzar material blanco hueso satinado premium
+            // Forzar material blanco marfil impecable
             spineMesh.traverse((node) => {
                 if (node.isMesh) {
                     node.material = new THREE.MeshStandardMaterial({
@@ -396,7 +399,7 @@
                 }
             });
 
-            // Medición geométrica absoluta eliminando desfaces de origen
+            // Medición geométrica absoluta
             const box = new THREE.Box3().setFromObject(spineMesh);
             const center = box.getCenter(new THREE.Vector3());
             const size = box.getSize(new THREE.Vector3());
@@ -409,24 +412,32 @@
             pivotGroup = new THREE.Group();
             pivotGroup.add(spineMesh);
 
-            // Escalamiento matemático automatizado
+            // Escalamiento matemático adaptativo
             const maxDim = Math.max(size.x, size.y, size.z);
             if(maxDim > 0) {
-                const targetScale = 4.2 / maxDim; // Ligeramente más grande para lucir detalles
+                const targetScale = 3.6 / maxDim; 
                 pivotGroup.scale.set(targetScale, targetScale, targetScale);
             }
             
-            // Centrado perfecto dentro del canvas derecho independiente
-            pivotGroup.position.set(0, 0, 0);
+            // Posicionamiento de fondo a la derecha real
+            window.repositionPivot = function() {
+                if (window.innerWidth > 768) {
+                    pivotGroup.position.set(1.5, -0.3, 0); // Derecha en compu
+                } else {
+                    pivotGroup.position.set(0, -0.5, -0.8); // Fondo centrado en celular
+                }
+            }
+            
+            repositionPivot();
             scene.add(pivotGroup);
 
-            // --- ANIMACIÓN ACELERADA AL SCROLLER (Math.PI * 4 = Dos vueltas completas veloces) ---
+            // --- ANIMACIÓN ACELERADA: Dos vueltas completas veloces al scrollear ---
             gsap.to(pivotGroup.rotation, {
                 scrollTrigger: {
                     trigger: "#inicio",
                     start: "top top",
                     end: "bottom top",
-                    scrub: 0.3 // Scroll más responsivo y directo
+                    scrub: 0.3
                 },
                 y: Math.PI * 4, 
                 x: 0.15,         
@@ -438,17 +449,17 @@
         function animate() {
             requestAnimationFrame(animate);
             if (pivotGroup && !gsap.isTweening(pivotGroup.rotation)) {
-                pivotGroup.rotation.y += 0.003; // Giro flotante automático base
+                pivotGroup.rotation.y += 0.003; 
             }
             renderer.render(scene, camera);
         }
         animate();
 
-        // Control responsivo de dimensiones del Canvas derecho
         window.addEventListener('resize', () => {
-            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            if (window.repositionPivot) window.repositionPivot();
         });
 
         // Entrada de Textos del Hero
