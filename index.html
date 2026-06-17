@@ -23,6 +23,13 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
+    <!-- BOTÓN FLOTANTE FIJO EXCLUSIVO PARA MÓVIL (ESTILO WHATSAPP) -->
+    <button onclick="openModal()" class="md:hidden fixed bottom-6 right-6 z-40 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-green-500/3xl border border-white/10 active:scale-95 transition-transform cursor-pointer" aria-label="Hacer Cita">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5M9.75 15.75h.008v.008H9.75v-.008zm0-3h.008v.008H9.75v-.008zm3 3h.008v.008h-.008v-.008zm0-3h.008v.008h-.008v-.008zm3 3h.008v.008h-.008v-.008zm0-3h.008v.008h-.008v-.008z"/>
+        </svg>
+    </button>
+
     <!-- NAVIGATION WITH BRAND LOGO & SOCIAL ICONS -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -103,7 +110,7 @@
                 </p>
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
                     <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
-                        ✉️ Hacer Cita
+                        🗓 Hacer Cita
                     </button>
                 </div>
             </div>
@@ -165,7 +172,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN NOSOTROS (TEXTOS ORIGINALES EXACTOS) -->
+    <!-- SECCIÓN NOSOTROS -->
     <section id="compromiso" class="py-24 max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12">
             <div class="reveal-up bg-white border border-slate-100 p-8 sm:p-10 rounded-3xl shadow-xs hover:shadow-md transition-shadow">
@@ -185,7 +192,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE CAUSAS Y PADECIMIENTOS (REINTEGRADA COMPLETAMENTE) -->
+    <!-- SECCIÓN DE CAUSAS Y PADECIMIENTOS -->
     <section id="padecimientos" class="py-24 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
@@ -382,7 +389,7 @@
         </div>
     </footer>
 
-    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT DEFINITIVO) -->
+    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT) -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -426,7 +433,6 @@
         const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
         scene.add(ambientLight);
 
-        // Luces puntuales de estudio que generan sombras volumétricas en los bordes óseos
         const light1 = new THREE.DirectionalLight(0xffffff, 2.5); 
         light1.position.set(6, 8, 5);
         scene.add(light1);
@@ -526,7 +532,7 @@
               .from("#hero-desc", { opacity: 0, y: 30 }, "-=1")
               .from("#hero-actions", { opacity: 0, y: 25 }, "-=1");
 
-            // Scroll Reveal Dinámico por bloques de contenido (incluyendo padecimientos)
+            // Scroll Reveal por Secciones (Incluyendo Causas y Padecimientos)
             const elementsToReveal = document.querySelectorAll('#compromiso > div, #padecimientos .reveal-up, #habitos div.reveal-up, #terapias .reveal-up, #ubicacion .reveal-up');
             elementsToReveal.forEach((el) => {
                 el.classList.add('active');
