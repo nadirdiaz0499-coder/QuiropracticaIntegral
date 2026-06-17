@@ -26,7 +26,6 @@
     <!-- NAVIGATION WITH BRAND LOGO & SOCIAL ICONS -->
     <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-slate-100/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo Local Vinculado -->
             <a href="#" class="flex items-center gap-3 group relative z-50">
                 <img src="logo.png" alt="Quiropráctica Integral Metepec Logo" class="h-10 w-auto object-contain">
                 <div class="flex flex-col">
@@ -57,7 +56,6 @@
                 </button>
             </div>
 
-            <!-- Botón Menú Móvil -->
             <button id="menu-btn" class="md:hidden text-slate-700 p-2 focus:outline-none relative z-50" aria-label="Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
@@ -77,17 +75,14 @@
         </div>
     </header>
 
-    <!-- HERO SECTION (CON GRADIENTE ASIMÉTRICO DE CONTRASTE) -->
+    <!-- HERO SECTION (ESTRUCTURA DE REJILLA BLINDADA) -->
     <section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 text-white overflow-hidden">
         
-        <!-- Capa de Gradiente de fondo: El destello verde se posiciona atrás del modelo 3D en el lado derecho -->
-        <div class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_80%_50%,rgba(22,163,74,0.15),transparent_45%)]"></div>
+        <div class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_75%_50%,rgba(22,163,74,0.12),transparent_50%)]"></div>
 
-        <!-- Contenedor WebGL para la escena 3D -->
-        <div id="canvas-3d-container" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-6 py-16 w-full grid md:grid-cols-12 gap-12 items-center relative z-20 pointer-events-none">
-            <div class="space-y-6 md:col-span-7 lg:col-span-6 relative z-30">
+        <div class="max-w-7xl mx-auto px-6 py-20 w-full grid md:grid-cols-12 gap-8 items-center relative z-20">
+            <!-- Columna del Texto: Ocupa la mitad izquierda estricta en PC -->
+            <div class="space-y-6 md:col-span-7 lg:col-span-6 relative z-30 pointer-events-none">
                 <div id="hero-tag" class="reveal-up inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase text-green-400">
                     🌿 Cuidado Quiropráctico Profesional en Metepec
                 </div>
@@ -95,14 +90,19 @@
                     Recupera tu vitalidad, <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">libera tu columna.</span>
                 </h1>
-                <p id="hero-desc" class="reveal-up text-lg text-slate-300 max-w-lg font-light leading-relaxed">
+                <p id="hero-desc" class="reveal-up text-lg text-slate-300 font-light leading-relaxed">
                     En <strong class="font-semibold text-white">Quiropráctica Integral Metepec</strong> nos enfocamos en detectar y corregir la verdadera causa de raíz de tus padecimientos a través de ajustes precisos.
                 </p>
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
                     <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
-                        🗓 Hacer Cita
+                        Ajuste Postural 🗓 Hacer Cita
                     </button>
                 </div>
+            </div>
+
+            <!-- Columna del Canvas 3D: Contenedor dedicado a la mitad derecha en PC -->
+            <div class="md:col-span-5 lg:col-span-6 h-[500px] md:h-[600px] w-full relative z-10">
+                <div id="canvas-3d-container" class="w-full h-full"></div>
             </div>
         </div>
     </section>
@@ -324,7 +324,7 @@
         </div>
     </footer>
 
-    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT) -->
+    <!-- INTERACCIONES Y CANVAS DE RENDERIZADO (JAVASCRIPT REFINADO) -->
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
@@ -352,23 +352,23 @@
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        // --- ENTORNO THREE.JS CON ALCORITMO DE CORRECCIÓN DE DESFASE VERTICAL ---
+        // --- ENTORNO THREE.JS CON RECALCULACIÓN DE RESPONSIVO CRÍTICO ---
         const container = document.getElementById('canvas-3d-container');
         const scene = new THREE.Scene();
         
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 5000);
-        camera.position.set(0, 0, 6); 
+        // Ajustamos campo de visión para que encuadre perfectamente en el div de la derecha
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.01, 5000);
+        camera.position.set(0, 0, 5); 
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(container.clientWidth, container.clientHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
         // Iluminación blanca de alta fidelidad para el acabado marfil
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
         scene.add(ambientLight);
 
-        // Luces puntuales de estudio que generan sombras volumétricas en los bordes óseos
         const light1 = new THREE.DirectionalLight(0xffffff, 2.5); 
         light1.position.set(6, 8, 5);
         scene.add(light1);
@@ -377,18 +377,18 @@
         light2.position.set(-6, 4, 5);
         scene.add(light2);
 
-        let spineMesh;
+        let spineMesh, pivotGroup;
         const loader = new THREE.GLTFLoader();
 
         loader.load('./spine_collection_of_thunthu.glb', (gltf) => {
             spineMesh = gltf.scene;
             
-            // CORRECCIÓN DE COLOR: Forzar material blanco hueso/marfil limpio con acabado satinado premium
+            // Forzar material blanco hueso satinado premium
             spineMesh.traverse((node) => {
                 if (node.isMesh) {
                     node.material = new THREE.MeshStandardMaterial({
-                        color: 0xf8fafc,       // Blanco marfil texturizado limpio (Slate 50)
-                        roughness: 0.4,        // Textura ósea realista no reflectante
+                        color: 0xf8fafc,       
+                        roughness: 0.4,        
                         metalness: 0.05,       
                         side: THREE.DoubleSide 
                     });
@@ -396,54 +396,40 @@
                 }
             });
 
-            // Medición geométrica absoluta eliminando el desfase vertical de la colección de Blender
-            const box = new THREE.Box3();
-            box.setFromObject(spineMesh);
+            // Medición geométrica absoluta eliminando desfaces de origen
+            const box = new THREE.Box3().setFromObject(spineMesh);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
             
-            const center = new THREE.Vector3();
-            box.getCenter(center);
-            
-            const size = new THREE.Vector3();
-            box.getSize(size);
-            
-            // Forzar a los huesos reales a centrar su masa en las coordenadas relativas 0,0,0
+            // Centrar los huesos reales a 0,0,0
             spineMesh.position.x = -center.x;
             spineMesh.position.y = -center.y;
             spineMesh.position.z = -center.z;
 
-            // Grupo pivote maestro para el control responsive independiente de la altura
-            const pivotGroup = new THREE.Group();
+            pivotGroup = new THREE.Group();
             pivotGroup.add(spineMesh);
 
             // Escalamiento matemático automatizado
             const maxDim = Math.max(size.x, size.y, size.z);
             if(maxDim > 0) {
-                const targetScale = 3.6 / maxDim; 
+                const targetScale = 4.2 / maxDim; // Ligeramente más grande para lucir detalles
                 pivotGroup.scale.set(targetScale, targetScale, targetScale);
             }
             
-            // Posicionamiento perfecto: Bajar el pivote en el eje Y para centrar la columna en la zona obscura
-            window.repositionPivot = function() {
-                if (window.innerWidth > 768) {
-                    pivotGroup.position.set(1.5, -0.3, 0); // Totalmente centrado verticalmente a la derecha en PC
-                } else {
-                    pivotGroup.position.set(0, -0.5, -0.8); // Centrado de fondo en móviles
-                }
-            }
-            
-            repositionPivot();
+            // Centrado perfecto dentro del canvas derecho independiente
+            pivotGroup.position.set(0, 0, 0);
             scene.add(pivotGroup);
 
-            // Giro tridimensional elástico amarrado al scroll de la pantalla
+            // --- ANIMACIÓN ACELERADA AL SCROLLER (Math.PI * 4 = Dos vueltas completas veloces) ---
             gsap.to(pivotGroup.rotation, {
                 scrollTrigger: {
                     trigger: "#inicio",
                     start: "top top",
                     end: "bottom top",
-                    scrub: 0.5
+                    scrub: 0.3 // Scroll más responsivo y directo
                 },
-                y: Math.PI * 2, // Rotación tridimensional de 360° al bajar
-                x: 0.1,         
+                y: Math.PI * 4, 
+                x: 0.15,         
                 ease: "none"
             });
         });
@@ -451,19 +437,18 @@
         // Loop de Renderizado
         function animate() {
             requestAnimationFrame(animate);
-            const activeGroup = scene.children.find(c => c.type === "Group");
-            if (activeGroup && !gsap.isTweening(activeGroup.rotation)) {
-                activeGroup.rotation.y += 0.003; // Rotación automática constante de flotación
+            if (pivotGroup && !gsap.isTweening(pivotGroup.rotation)) {
+                pivotGroup.rotation.y += 0.003; // Giro flotante automático base
             }
             renderer.render(scene, camera);
         }
         animate();
 
+        // Control responsivo de dimensiones del Canvas derecho
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            if (window.repositionPivot) window.repositionPivot();
+            renderer.setSize(container.clientWidth, container.clientHeight);
         });
 
         // Entrada de Textos del Hero
