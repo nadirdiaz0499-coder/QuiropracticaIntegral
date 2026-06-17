@@ -77,9 +77,12 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (CON GRADIENTE ASIMÉTRICO DE CONTRASTE) -->
     <section id="inicio" class="relative min-h-screen flex items-center bg-slate-950 text-white overflow-hidden">
         
+        <!-- Capa de Gradiente de fondo: El destello verde se posiciona atrás del modelo 3D en el lado derecho -->
+        <div class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_80%_50%,rgba(22,163,74,0.15),transparent_45%)]"></div>
+
         <!-- Contenedor WebGL para la escena 3D -->
         <div id="canvas-3d-container" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></div>
 
@@ -95,7 +98,6 @@
                 <p id="hero-desc" class="reveal-up text-lg text-slate-300 max-w-lg font-light leading-relaxed">
                     En <strong class="font-semibold text-white">Quiropráctica Integral Metepec</strong> nos enfocamos en detectar y corregir la verdadera causa de raíz de tus padecimientos a través de ajustes precisos.
                 </p>
-                <!-- CORRECCIÓN DE TEXTO EN EL BOTÓN -->
                 <div id="hero-actions" class="reveal-up pt-4 pointer-events-auto">
                     <button onclick="openModal()" class="relative z-50 bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 text-slate-950 font-black px-10 py-4 rounded-full shadow-lg shadow-green-500/10 transition-all transform hover:-translate-y-1 text-sm uppercase tracking-wide cursor-pointer flex items-center gap-2">
                         🗓 Hacer Cita
@@ -246,7 +248,7 @@
                 <div class="reveal-up bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors p-6">
                     <img src="alineacion.png" alt="Alineación de Columna" class="w-full h-44 object-cover rounded-xl mb-4">
                     <h3 class="text-lg font-bold text-green-400 mb-2">Alineación de Columna</h3>
-                    <p class="text-xs text-slate-400 leading-relaxed font-light">Ajuste articular enfocado en liberar las presiones ocasionadas por subluxaciones, corregir los desajustes y recuperar el bienestar corporal.</p>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">Ajuste articular enfocado en liberar las presiones de desajustes y recuperar el bienestar corporal.</p>
                 </div>
                 <div class="reveal-up bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-colors p-6">
                     <img src="activador.png" alt="Instrumento Activador" class="w-full h-44 object-cover rounded-xl mb-4">
@@ -350,7 +352,7 @@
         menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         mobileLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-        // --- ENTORNO THREE.JS CON ALGORITMO DE CENTRADO ABSOLUTO EN EJE Y ---
+        // --- ENTORNO THREE.JS CON ALCORITMO DE CORRECCIÓN DE DESFASE VERTICAL ---
         const container = document.getElementById('canvas-3d-container');
         const scene = new THREE.Scene();
         
@@ -362,16 +364,17 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Iluminación
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.0);
+        // Iluminación blanca de alta fidelidad para el acabado marfil
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.8);
         scene.add(ambientLight);
 
-        const light1 = new THREE.DirectionalLight(0x22c55e, 3.5); 
-        light1.position.set(5, 10, 7);
+        // Luces puntuales de estudio que generan sombras volumétricas en los bordes óseos
+        const light1 = new THREE.DirectionalLight(0xffffff, 2.5); 
+        light1.position.set(6, 8, 5);
         scene.add(light1);
 
-        const light2 = new THREE.DirectionalLight(0xffffff, 2.5);
-        light2.position.set(-5, 4, 5);
+        const light2 = new THREE.DirectionalLight(0xffffff, 2.0);
+        light2.position.set(-6, 4, 5);
         scene.add(light2);
 
         let spineMesh;
@@ -380,20 +383,20 @@
         loader.load('./spine_collection_of_thunthu.glb', (gltf) => {
             spineMesh = gltf.scene;
             
-            // Re-mapear materiales a verde esmeralda
+            // CORRECCIÓN DE COLOR: Forzar material blanco hueso/marfil limpio con acabado satinado premium
             spineMesh.traverse((node) => {
                 if (node.isMesh) {
                     node.material = new THREE.MeshStandardMaterial({
-                        color: 0x22c55e,       
-                        roughness: 0.25,        
-                        metalness: 0.1,        
+                        color: 0xf8fafc,       // Blanco marfil texturizado limpio (Slate 50)
+                        roughness: 0.4,        // Textura ósea realista no reflectante
+                        metalness: 0.05,       
                         side: THREE.DoubleSide 
                     });
                     node.material.needsUpdate = true;
                 }
             });
 
-            // CORRECCIÓN MATEMÁTICA BRUTAL: Calcular caja de colisión absoluta de la geometría del hueso
+            // Medición geométrica absoluta eliminando el desfase vertical de la colección de Blender
             const box = new THREE.Box3();
             box.setFromObject(spineMesh);
             
@@ -403,26 +406,26 @@
             const size = new THREE.Vector3();
             box.getSize(size);
             
-            // Forzar de forma estricta que los huesos reales queden en el origen local (0,0,0) de su contenedor
+            // Forzar a los huesos reales a centrar su masa en las coordenadas relativas 0,0,0
             spineMesh.position.x = -center.x;
             spineMesh.position.y = -center.y;
             spineMesh.position.z = -center.z;
 
-            // Crear un nodo pivote maestro para controlar la altura real de forma independiente
+            // Grupo pivote maestro para el control responsive independiente de la altura
             const pivotGroup = new THREE.Group();
             pivotGroup.add(spineMesh);
 
-            // Escalamiento matemático adaptativo basado en el hueso real detectado
+            // Escalamiento matemático automatizado
             const maxDim = Math.max(size.x, size.y, size.z);
             if(maxDim > 0) {
                 const targetScale = 3.6 / maxDim; 
                 pivotGroup.scale.set(targetScale, targetScale, targetScale);
             }
             
-            // Función responsiva aplicada directamente sobre el grupo pivote corregido
+            // Posicionamiento perfecto: Bajar el pivote en el eje Y para centrar la columna en la zona obscura
             window.repositionPivot = function() {
                 if (window.innerWidth > 768) {
-                    pivotGroup.position.set(1.5, -0.2, 0); // Bajado sutilmente y centrado a la derecha en PC
+                    pivotGroup.position.set(1.5, -0.3, 0); // Totalmente centrado verticalmente a la derecha en PC
                 } else {
                     pivotGroup.position.set(0, -0.5, -0.8); // Centrado de fondo en móviles
                 }
@@ -431,7 +434,7 @@
             repositionPivot();
             scene.add(pivotGroup);
 
-            // Vinculación al Scroll con GSAP sobre el grupo pivote alineado
+            // Giro tridimensional elástico amarrado al scroll de la pantalla
             gsap.to(pivotGroup.rotation, {
                 scrollTrigger: {
                     trigger: "#inicio",
@@ -439,7 +442,7 @@
                     end: "bottom top",
                     scrub: 0.5
                 },
-                y: Math.PI * 2, // Rotación tridimensional de 360° al scrollear
+                y: Math.PI * 2, // Rotación tridimensional de 360° al bajar
                 x: 0.1,         
                 ease: "none"
             });
@@ -448,10 +451,9 @@
         // Loop de Renderizado
         function animate() {
             requestAnimationFrame(animate);
-            // Rotación automática constante si el objeto ya cargó en la escena
             const activeGroup = scene.children.find(c => c.type === "Group");
             if (activeGroup && !gsap.isTweening(activeGroup.rotation)) {
-                activeGroup.rotation.y += 0.003; 
+                activeGroup.rotation.y += 0.003; // Rotación automática constante de flotación
             }
             renderer.render(scene, camera);
         }
